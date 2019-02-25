@@ -28,6 +28,19 @@ When you are done with installation, copy the .env.example file to .env, update 
 ```
 $ cp .env.example .env
 ```
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=cloudou
+DB_USERNAME=user
+DB_PASSWORD=password
+```
+
+Generate new App key
+```
+$ php artisan key:generate
+```
 
 Migrate the application
 ```
