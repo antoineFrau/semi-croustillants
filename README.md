@@ -10,6 +10,7 @@ What things you need to install the software.
 - Git
 - PHP
 - Composer
+- NPM
 
 ## Install
 Clone the git repository on your computer
@@ -22,6 +23,13 @@ After cloning the application, you need to install it's dependencies.
 ```
 $ composer install
 ```
+
+For the front end you will need to run 
+```
+$ npm install
+$ npm run watch
+```
+Like that you will install all dependancies for JS development and compile the VueJS components.
 
 ## Setup
 When you are done with installation, copy the .env.example file to .env, update it with your own local database configuration
@@ -50,7 +58,9 @@ $ php artisan migrate
 Run the application
 ```
 $ php artisan serve
+$ npm run watch
 ```
+
 ## Content
 
 ### CORS
@@ -67,6 +77,16 @@ Then to access user informations (do other request to our API) you need to pass 
 ```
 Authorization Bearer eyJ0..
 ```
+
+### Front 
+Create Sign up component's which is used on the `signup.blade.php` file. 
+See `resources/assets/js/app.js` to add new components.
+Create it on the `resources/assets/js/components/YourComponentHere.vue`
+
+Layouts (`resources/views/layouts/home.blade.php`) = Page = Contains Sections
+Sections (`resources/views/home.blade.php`) = Contains components
+Components = content
+
 
 ## Code of Conduct
 
