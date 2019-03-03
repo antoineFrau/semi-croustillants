@@ -32,13 +32,11 @@ class CreateTchatsTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('posts_user_one_id_foreign');
-            $table->dropColumn('user_id');
-        });
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('posts_user_two_id_foreign');
-            $table->dropColumn('user_id');
+        Schema::table('tchats', function (Blueprint $table) {
+            $table->dropForeign('tchats_user_one_id_foreign');
+            $table->dropColumn('user_one_id');
+            $table->dropForeign('tchats_user_two_id_foreign');
+            $table->dropColumn('user_two_id');
         });
         Schema::dropIfExists('tchats');
     }

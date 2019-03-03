@@ -17,9 +17,9 @@ class CreateWebsitesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('url');
-            $table->unsignedInteger('historic_id');
-            $table->foreign('historic_id')
-            ->references('id')->on('historic');
+            $table->unsignedInteger('history_id');
+            $table->foreign('history_id')
+            ->references('id')->on('histories');
             $table->timestamps();
         });
     }
@@ -31,9 +31,9 @@ class CreateWebsitesTable extends Migration
      */
     public function down()
     {
-        Schema::table('historic', function (Blueprint $table) {
-            $table->dropForeign('websites_historic_id_foreign');
-            $table->dropColumn('historic_id');
+        Schema::table('websites', function (Blueprint $table) {
+            $table->dropForeign('websites_history_id_foreign');
+            $table->dropColumn('histories_id');
         });
         Schema::dropIfExists('websites');
     }

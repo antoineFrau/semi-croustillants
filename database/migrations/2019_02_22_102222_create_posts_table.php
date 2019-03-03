@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Actualite extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -32,7 +32,7 @@ class Actualite extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
             $table->dropForeign('posts_user_id_foreign');
             $table->dropColumn('user_id');
         });

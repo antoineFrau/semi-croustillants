@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAffinityTable extends Migration
+class CreateAffinitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAffinityTable extends Migration
      */
     public function up()
     {
-        Schema::create('affinity', function (Blueprint $table) {
+        Schema::create('affinities', function (Blueprint $table) {
             $table->unsignedInteger('user_one_id');
             $table->foreign('user_one_id')
             ->references('id')->on('users');
@@ -33,14 +33,12 @@ class CreateAffinityTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('posts_user_one_id_foreign');
-            $table->dropColumn('user_id');
+        Schema::table('affinities', function (Blueprint $table) {
+            $table->dropForeign('affinities_user_one_id_foreign');
+            $table->dropColumn('user_one_id');
+            $table->dropForeign('affinities_user_two_id_foreign');
+            $table->dropColumn('user_two_id');
         });
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('posts_user_two_id_foreign');
-            $table->dropColumn('user_id');
-        });
-        Schema::dropIfExists('affinity');
+        Schema::dropIfExists('affinities');
     }
 }

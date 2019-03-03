@@ -20,6 +20,8 @@ class CreateMessagesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')
             ->references('id')->on('users');
+            $table->unsignedInteger('user_one_id');
+            $table->unsignedInteger('user_two_id');
             $table->foreign(['user_one_id','user_two_id'])
             ->references(['user_one_id','user_two_id'])
             ->on('tchats');
@@ -34,9 +36,12 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('posts_user_id_foreign');
+        Schema::table('messages', function (Blueprint $table) {
+            $table->dropForeign('messages_user_id_foreign');
             $table->dropColumn('user_id');
+            $table->dropForeign('messages_user_one_id_user_two_id_foreign');
+            $table->dropColumn('user_one_id');
+            $table->dropColumn('user_two_id');
         });
         Schema::dropIfExists('messages');
     }

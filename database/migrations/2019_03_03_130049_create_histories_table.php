@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatutesTable extends Migration
+class CreateHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateStatutesTable extends Migration
      */
     public function up()
     {
-        Schema::create('statutes', function (Blueprint $table) {
+        Schema::create('histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->integer('day_start');
-            $table->integer('day_end');
-            $table->integer('hour_start');
-            $table->integer('hour_end');
+            $table->datetime('date');
+            $table->string('browser');
+            $table->string('os');
+            $table->geometry('location');
+            $table->integer('connection_time');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateStatutesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statutes');
+        Schema::dropIfExists('histories');
     }
 }

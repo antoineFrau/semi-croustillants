@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHistoricTable extends Migration
+class CreateStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateHistoricTable extends Migration
      */
     public function up()
     {
-        Schema::create('historic', function (Blueprint $table) {
+        Schema::create('status', function (Blueprint $table) {
             $table->increments('id');
-            $table->datetime('date');
-            $table->string('browser');
-            $table->string('os');
-            $table->geometry('location');
-            $table->integer('connection_time');
+            $table->string('title');
+            $table->integer('day_start');
+            $table->integer('day_end');
+            $table->integer('hour_start');
+            $table->integer('hour_end');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateHistoricTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historic');
+        Schema::dropIfExists('status');
     }
 }

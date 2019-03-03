@@ -23,9 +23,9 @@ class CreateCookiesTable extends Migration
             $table->integer('size');
             $table->string('http');
             $table->boolean('secured');
-            $table->unsignedInteger('historic_id');
-            $table->foreign('historic_id')
-            ->references('id')->on('historic');
+            $table->unsignedInteger('history_id');
+            $table->foreign('history_id')
+            ->references('id')->on('histories');
             $table->timestamps();
         });
     }
@@ -37,9 +37,9 @@ class CreateCookiesTable extends Migration
      */
     public function down()
     {
-        Schema::table('historic', function (Blueprint $table) {
-            $table->dropForeign('websites_historic_id_foreign');
-            $table->dropColumn('historic_id');
+        Schema::table('cookies', function (Blueprint $table) {
+            $table->dropForeign('cookies_history_id_foreign');
+            $table->dropColumn('history_id');
         });
         Schema::dropIfExists('cookies');
     }
