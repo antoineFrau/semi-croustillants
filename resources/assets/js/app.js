@@ -6,8 +6,10 @@
  */
 
 require('./bootstrap');
-
+import BootstrapVue from 'bootstrap-vue'
 window.Vue = require('vue');
+
+Vue.use(BootstrapVue)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
