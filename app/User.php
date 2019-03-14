@@ -35,4 +35,23 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     * Status belongs to one User
+     * status.id  ->  users.status_id
+     */
+    public function status()
+    {
+        return $this->belongsTo('App\Status', 'status_id');
+    }
+
+    /**
+     * User has many Activities
+     * user_activities.user_id  ->  users.id
+     */
+    public function activities()
+    {
+        return $this->belongsToMany('App\Activity', "user_activities");
+    }
+
 }
