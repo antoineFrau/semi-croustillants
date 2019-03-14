@@ -16,10 +16,10 @@ class CreateStatusTable extends Migration
         Schema::create('status', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('day_start');
-            $table->integer('day_end');
-            $table->integer('hour_start');
-            $table->integer('hour_end');
+            $table->integer('day_start'); // $dayOfWeek 0 (for Sunday) through 6 (for Saturday)
+            $table->integer('day_end'); // $dayOfWeek 0 (for Sunday) through 6 (for Saturday)
+            $table->integer('hour_start'); // 1900 = 19h00
+            $table->integer('hour_end'); // 1000 = 1h00
             $table->timestamps();
         });
     }

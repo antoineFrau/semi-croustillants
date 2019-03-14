@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivitiesCategoriesTable extends Migration
+class CreateActivityCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateActivitiesCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities_categories', function (Blueprint $table) {
+        Schema::create('activity_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateActivitiesCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities_categories');
+        Schema::dropIfExists('activity_categories');
     }
 }

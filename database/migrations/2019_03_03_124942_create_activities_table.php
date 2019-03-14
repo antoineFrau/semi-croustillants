@@ -16,12 +16,9 @@ class CreateActivitiesTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')
-            ->references('id')->on('users');
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')
-            ->references('id')->on('activities_categories');
+            ->references('id')->on('activity_categories');
             $table->timestamps();
         });
     }
@@ -34,8 +31,6 @@ class CreateActivitiesTable extends Migration
     public function down()
     {
         Schema::table('activities', function (Blueprint $table) {
-            $table->dropForeign('activities_user_id_foreign');
-            $table->dropColumn('user_id');
             $table->dropForeign('activities_category_id_foreign');
             $table->dropColumn('category_id');
         });
