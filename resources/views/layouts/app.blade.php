@@ -17,20 +17,20 @@
     <style>
         html,
         body {
-            background: #007bff;
-            background: linear-gradient(to right, #0062E6, #33AEFF);
+            background: #fff;
             font-family: 'Raleway', sans-serif;
         }
     </style>
 </head>
 
 <body>
+
     <div id="app">
+        <!-- @yield('header') -->
         @yield('content')
     </div>
     <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
     <script type="text/javascript" src="{{ mix('/js/bootstrap.js') }}"></script>
-
 </body>
 
-</html> 
+</html>

@@ -31,97 +31,46 @@
 }
 #api-doc .m-b-md {
   margin-bottom: 30px;
-}:root {
-  --input-padding-x: 1.5rem;
-  --input-padding-y: .75rem;
 }
-.card-signin {
-  border: 0;
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+.vue-star-rating-star[data-v-62fb0ca4] {
+    overflow: visible !important;
 }
-.card-signin .card-title {
-  margin-bottom: 2rem;
-  font-weight: 300;
-  font-size: 1.5rem;
+
+.vue-star-rating-star[data-v-bcd54714] {
+    display: inline-block;
 }
-.card-signin .card-img-left {
-  width: 45%;
-  /* Link to your background image using in the property below! */
-  background: scroll center url("https://source.unsplash.com/WEQbe2jBg40/414x512");
-  background-size: cover;
+.vue-star-rating-pointer[data-v-bcd54714] {
+    cursor: pointer;
 }
-.card-signin .card-body {
-  padding: 2rem;
+.vue-star-rating[data-v-bcd54714] {
+    display: flex;
+    align-items: center;
 }
-.form-signin {
-  width: 100%;
+.vue-star-rating-inline[data-v-bcd54714] {
+    display: inline-flex;
 }
-.form-signin .btn {
-  font-size: 80%;
-  border-radius: 5rem;
-  letter-spacing: 0.1rem;
-  font-weight: bold;
-  padding: 1rem;
-  transition: all 0.2s;
+.vue-star-rating-rating-text[data-v-bcd54714] {
+    margin-top: 7px;
+    margin-left: 7px;
 }
-.form-label-group {
-  position: relative;
-  margin-bottom: 1rem;
+.vue-star-rating-rtl[data-v-bcd54714] {
+    direction: rtl;
 }
-.form-label-group input {
-  height: auto;
-  border-radius: 2rem;
+.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-bcd54714] {
+    margin-right: 10px;
+    direction: rtl;
 }
-.form-label-group > input,
-.form-label-group > label {
-  padding: var(--input-padding-y) var(--input-padding-x);
+
+@media (min-width: 992px) {
+.gedf-main[data-v-1e4d2916] {
+        padding-left: 4rem;
+        padding-right: 4rem;
 }
-.form-label-group > label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  margin-bottom: 0;
-  /* Override default `<label>` margin */
-  line-height: 1.5;
-  color: #495057;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-  transition: all 0.1s ease-in-out;
+.gedf-card[data-v-1e4d2916] {
+        margin-bottom: 2.77rem;
 }
-.form-label-group input::-webkit-input-placeholder {
-  color: transparent;
 }
-.form-label-group input:-ms-input-placeholder {
-  color: transparent;
-}
-.form-label-group input::-ms-input-placeholder {
-  color: transparent;
-}
-.form-label-group input::placeholder {
-  color: transparent;
-}
-.form-label-group input:not(:placeholder-shown) {
-  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
-  padding-bottom: calc(var(--input-padding-y) / 3);
-}
-.form-label-group input:not(:placeholder-shown) ~ label {
-  padding-top: calc(var(--input-padding-y) / 3);
-  padding-bottom: calc(var(--input-padding-y) / 3);
-  font-size: 12px;
-  color: #777;
-}
-.btn-google {
-  color: white;
-  background-color: #ea4335;
-}
-.btn-facebook {
-  color: white;
-  background-color: #3b5998;
-}@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -10782,4 +10731,113 @@ a.text-dark:focus {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.card-authentification {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-authentification .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.card-authentification .card-img-left {
+  width: 45%;
+  /* Link to your background image using in the property below! */
+  background: scroll center url("https://source.unsplash.com/WEQbe2jBg40/414x512");
+  background-size: cover;
+}
+
+.card-authentification .card-body {
+  padding: 2rem;
+}
+
+.form-authentification {
+  width: 100%;
+}
+
+.form-authentification .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group > input,
+.form-label-group > label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+.btn-google {
+  color: white;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+}
+
+/* END AUTH */
 

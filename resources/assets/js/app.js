@@ -18,7 +18,9 @@ Vue.use(BootstrapVue)
  */
 Vue.component('api-doc-component', require('./components/ApiDocComponent.vue').default);
 Vue.component('signup-component', require('./components/SignUpComponent.vue').default);
-
+Vue.component('signin-component', require('./components/SignInComponent.vue').default);
+Vue.component('header-component', require('./components/HeaderComponent.vue').default);
+Vue.component('social-feed-view', require('./views/SocialFeedView.vue').default);
 const app = new Vue({
     el: '#app'
 });
