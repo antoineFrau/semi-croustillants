@@ -9,7 +9,7 @@
 
     <title>Laravel</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -17,20 +17,20 @@
     <style>
         html,
         body {
-            background: #007bff;
-            background: linear-gradient(to right, #0062E6, #33AEFF);
+            background: #fff;
             font-family: 'Raleway', sans-serif;
         }
     </style>
 </head>
 
 <body>
-    <div id="app">
+
+    <div id="app" class="vh-100">
+        @yield('header')
         @yield('content')
     </div>
     <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
     <script type="text/javascript" src="{{ mix('/js/bootstrap.js') }}"></script>
-
 </body>
 
-</html> 
+</html>

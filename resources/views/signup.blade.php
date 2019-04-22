@@ -2,6 +2,6 @@
 
 @section('content')
 <div>
-    <signup-component></signup-component>
+    <signup-view></signup-view>
 </div>
-@endsection 
+@endsection
