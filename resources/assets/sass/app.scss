@@ -29,7 +29,14 @@
 .card-authentification .card-img-left {
   width: 45%;
   /* Link to your background image using in the property below! */
-  background: scroll center url('https://source.unsplash.com/WEQbe2jBg40/414x512');
+  background: scroll center url('../images/register-background.jpeg');
+  background-size: cover;
+}
+
+.card-authentification .card-img-right {
+  width: 45%;
+  /* Link to your background image using in the property below! */
+  background: scroll center url('../images/login-background.jpg');
   background-size: cover;
 }
 

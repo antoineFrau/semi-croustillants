@@ -13,12 +13,47 @@ use Illuminate\Http\Request;
 |
 */
 
+// Folder : User
+Route::group(['namespace' => 'User'], function () {
 
-Route::post('register', 'Auth\RegisterController@register');
-Route::post('login', 'Auth\LoginController@authenticate');
+    // Folder : Auth
+    Route::group(['namespace' => 'Auth'], function () {
 
-// Here are all routes which an iidentification is required
-Route::group(['middleware' => ['jwt.verify']], function() {
-    Route::get('user', 'UserController@getAuthenticatedUser');
-    Route::get('logout', 'Auth\LogoutController@logout');
+        Route::group(['prefix' => 'auth'], function () {
+
+            Route::post('login', 'LoginController@authenticate');
+            Route::post('register', 'RegisterController@register');
+
+            Route::group(['middleware' => ['jwt.verify']], function () {
+                // Is user still log
+                Route::any('/authentified', 'LoginController@getAuthenticatedUser');
+                Route::get('logout', 'LogoutController@logout');
+            });
+        });
+
+    });
+    
+
+    Route::group(['middleware' => ['jwt.verify']], function () {
+        // Folder Post
+        Route::group(['namespace' => 'Post'], function () {
+            Route::group(['prefix' => 'posts'], function () {
+                Route::post('/', 'PostController@show');
+                Route::post('create', 'PostController@create');
+            });
+        });
+
+        // Route::group(['prefix' => 'affinities'], function () {
+        //     Route::post('/', 'AffinityController@get');
+        //     Route::post('create', 'PostController@create');
+        // });
+
+        Route::group(['prefix' => 'edit'], function () {
+            Route::post('/', 'UserController@edit');
+            Route::post('password', 'UserController@editPassword');
+        });
+    });
+
+    
+
 });

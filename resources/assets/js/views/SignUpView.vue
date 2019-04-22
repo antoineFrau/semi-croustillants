@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 col-xl-9 mx-auto">
+  <div class="container vh-100">
+    <div class="row vh-100">
+      <div class="col-lg-10 col-xl-9 mx-auto my-auto">
         <div class="card card-authentification flex-row my-5">
           <div class="card-img-left d-none d-md-flex">
              <!-- Background image for card set in CSS! -->
@@ -44,14 +44,10 @@
 <script>
 	/* eslint-disable */
   export default {
-	computed:{
-      redirectIfAlreadyConnected () {
-		  console.log("aaa")
-        if(this.$store.getters.doesConnected)
-		  this.$router.push('user-panel')
-		return true
-      }
-    },
+		async beforeMount() {
+      this.options.headers.Authorization = 'Bearer '+this.$store.getters.getUserToken
+      await this.isUserLoggin()
+  	},
     data: () => ({
 		mailError: false,
 		passwordError: false,
@@ -66,13 +62,20 @@
 			password: '',
 			user_agents: window.navigator.userAgent
 		},
-		header: {
-			headers: {
-				'Access-Control-Allow-Origin': '*'
-			}
-		}
+		options: {
+      data: {},
+      headers: {
+        'Authorization': ''
+			},
+    },
 	}),
 	methods: {
+		isUserLoggin: async function() {
+      var isConnected = await this.$store.dispatch('isConnected', this.options)
+      if(isConnected){
+        window.location.href = '/'
+      }
+    },
 		loginAccount: function(){
 			this.mailError = this.emailInput == '' ? true : false
 			this.passwordError = this.passwordInput == '' ? true : false
