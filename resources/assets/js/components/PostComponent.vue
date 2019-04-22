@@ -22,7 +22,7 @@
     </div>
     <img class="card-img-top" :src="imgSrc" alt="Card image cap">
     <div class="card-body">
-        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+        <div class="text-muted h7 mb-2"> <i class="far fa-clock"></i> {{date}}</div>
 
         <p class="card-text">
             {{content}}
@@ -38,8 +38,10 @@ export default {
   components: {
     "stars-rating-component": StarsRating
   },
-  setRating: function(rating) {
-      return
+  methods: {
+    setRating: function(rating) {
+        console.log(rating)
+    },
   },
   data: () => ({
     rating: 0
@@ -49,7 +51,8 @@ export default {
     author: String,
     imgSrc: String,
     imgAuthor: String,
-    starRating: Number
+    starRating: Number,
+    date: String
   },
 }
 </script>

@@ -8,10 +8,11 @@
           <add-post-component  class="mb-4"></add-post-component>
           <div v-for="p in posts" :key="p.id">
             <post-component class="mb-4"
-            :content="p.content"
-            :author="p.author"
-            :imgSrc="p.imgSrc"
-            :imgAuthor="p.imgAuthor" >
+            :content="p.contents"
+            :author="p.user.lastname"
+            :imgSrc="'/storage/'+p.image_url"
+            :imgAuthor="'/storage/'+p.user.profile_image_url"
+            :date="p.date" >
             </post-component>
           </div>
         </div>
@@ -30,6 +31,11 @@ import AdComponent from '../components/AdComponent.vue'
 import AfinityListComponent from '../components/AfinityListComponent.vue'
 export default {
   name: 'Main',
+  async beforeMount() {
+      this.options.headers.Authorization = 'Bearer '+this.$store.getters.getUserToken
+      await this.isUserLoggin()
+      this.getPostData()
+  },
   props: {
     msg: String
   },
@@ -39,37 +45,30 @@ export default {
     "ad-component": AdComponent,
     "afinity-list-component": AfinityListComponent
   },
-  data: () => ({
-    posts: [
-      {
-        "id":1,
-        "author": "Jeremy Varesi",
-        "imgAuthor": "https://picsum.photos/50/50",
-        "imgSrc": "https://source.unsplash.com/random/500x350",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa praesentium esse magnam nemo dolor sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates."
-      },
-      {
-        "id":2,
-        "author": "Camille Rubio",
-        "imgAuthor": "https://picsum.photos/50/50",
-        "imgSrc": "https://source.unsplash.com/random/500x350",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa praesentium esse magnam nemo dolor sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates."
-      },
-      {
-        "id":3,
-        "author": "Chris LeCrack",
-        "imgAuthor": "https://picsum.photos/50/50",
-        "imgSrc": "https://source.unsplash.com/random/500x350",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa praesentium esse magnam nemo dolor sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates."
-      },
-      {
-        "id":4,
-        "author": "Antoine Frau",
-        "imgAuthor": "https://picsum.photos/50/50",
-        "imgSrc": "https://source.unsplash.com/random/500x350",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa praesentium esse magnam nemo dolor sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates."
+  methods: {
+    isUserLoggin: async function() {
+      var isConnected = await this.$store.dispatch('isConnected', this.options)
+      if(!isConnected){
+        window.location.href = '/login'
       }
-    ]
+    },
+    getPostData: function(){
+      window.axios.post('http://localhost:8000/api/posts', {}, this.options)
+        .then(response => {
+            this.posts = response.data.posts
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+  },
+  data: () => ({
+    options: {
+      data: {},
+      headers: {
+        'Authorization': ''
+			},
+    },
+    posts: []
   })
 }
 </script>
