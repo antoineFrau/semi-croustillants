@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 import BootstrapVue from 'bootstrap-vue'
+import { store } from './store'
 window.Vue = require('vue');
 
 Vue.use(BootstrapVue)
@@ -17,10 +18,11 @@ Vue.use(BootstrapVue)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('api-doc-component', require('./components/ApiDocComponent.vue').default);
-Vue.component('signup-component', require('./components/SignUpComponent.vue').default);
-Vue.component('signin-component', require('./components/SignInComponent.vue').default);
+Vue.component('signup-view', require('./views/SignUpView.vue').default);
+Vue.component('signin-view', require('./views/SignInView.vue').default);
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 Vue.component('social-feed-view', require('./views/SocialFeedView.vue').default);
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store
 });

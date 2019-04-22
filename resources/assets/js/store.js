@@ -8,7 +8,6 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         usertoken: '',
-
     },
     plugins: [
         createPersistedState({
@@ -31,10 +30,16 @@ export const store = new Vuex.Store({
         }
     },
     actions: {
-        async doesConnected(context) {
-            let token = (await Axios.get('/user/')).data;
-            if()
-            context.commit("usertoken", data);
+        async isConnected(state, options) {
+            let result
+            await window.axios.get('http://localhost:8000/api/auth/authentified', options)
+                .then(response => {
+                    result = true
+                }).catch(error => {
+                    state.usertoken = ''
+                    result = false
+                })
+            return result
         }
     }
 })
