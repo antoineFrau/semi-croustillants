@@ -14,10 +14,18 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
+    $path = $faker->image(storage_path( 'app/public/users/profile/images'), 50, 50);
+    $img_url = str_replace(storage_path('app/public/'), '', $path);
     return [
-        'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'profile_image_url' => $img_url,
+        'lastname' => $faker->lastName(),
+        'firstname' => $faker->name(),
+        'address' => $faker->streetAddress(),
+        'postal_code' => $faker->postcode(),
+        'city' => $faker->city(),
+        'country' => $faker->state(),
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => str_random(10),
+        'remember_token' => str_random(10)
     ];
 });

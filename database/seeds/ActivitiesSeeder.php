@@ -11,8 +11,15 @@ class ActivitiesSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Activities::class, 50)->create()->each(function ($user) {
+        $sportActivities = ["Swiming", "Biking", "Fishing", "Camping", "Play tennis", "Kayaking", "Canoeing", "Football"];
 
-    	});
+        $culturalActivities = ["Literature", "Theatre", "Dance", "Museums", "Arts", "Music", "Film", "Culinary Arts"];
+
+        foreach ($sportActivities as $activity) {
+            DB::table('activities')->insert(['name' => $activity, "category_id" => 1]);
+        }
+        foreach ( $culturalActivities as $activity) {
+            DB::table('activities')->insert(['name' => $activity, "category_id" => 2]);
+        }
     }
 }

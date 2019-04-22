@@ -12,13 +12,8 @@ class ActivityCategoriesSeeder extends Seeder
     public function run()
     {
         DB::table('activity_categories')->insert([
-            'name' => 'Sport',
-        ],[
-        	'name' => 'Culturel',
-        ],[
-        	'name' => 'Voyage',
-        ],[
-        	'name' => 'Jeux',
+            ['name' => 'Sport'],
+            ['name' => 'Culturel']
         ]);
     }
 }
