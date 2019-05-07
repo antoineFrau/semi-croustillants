@@ -53,6 +53,7 @@ $ php artisan key:generate
 Migrate the application
 ```
 $ php artisan migrate
+$ php artisan db:seed
 ``` 
 
 Run the application

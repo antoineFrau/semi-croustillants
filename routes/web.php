@@ -17,3 +17,9 @@ Route::get('/', function () {
 Route::get('/signup', function () {
     return view('signup');
 });
+Route::get('/signin', function () {
+    return view('signin');
+});
+Route::get('login', function () {
+    return redirect('signin');
+});

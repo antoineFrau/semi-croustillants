@@ -1,20 +1,31 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User\Auth;
 
-use App\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-class UserController extends Controller
+class LoginController extends Controller
 {
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        try {
+            if (!$token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => ['type' => 'invalid_credentials', 'message' => 'Email/Password invalid']], 400);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['error' => ['type' => 'could_not_create_token', 'message' => 'Email/Password invalid']], 500);
+        }
+        return response()->json(compact('token'));
+    }
+
     public function getAuthenticatedUser()
     {
         try {
-            if (! $user = JWTAuth::parseToken()->authenticate()){
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['error' => ['type' => 'user_not_found', 'message' => 'User not found in database']], 404);
             }
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
